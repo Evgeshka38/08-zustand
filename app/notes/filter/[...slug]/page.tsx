@@ -11,9 +11,6 @@ import NotesClient from './Notes.client';
 
 const PER_PAGE = 12;
 
-const OG_IMAGE =
-  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
-
 interface NotesFilterPageProps {
   params: Promise<{
     slug: string[];
@@ -40,18 +37,13 @@ export const generateMetadata = async ({
     description,
 
     openGraph: {
-      title,
-      description,
-      url: `/notes/filter/${currentTag}`,
-      images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'NoteHub',
-      },
-    ],
-    },
+  title,
+  description,
+  url: `/notes/filter/${currentTag}`,
+  images: [
+    'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+  ],
+},
   };
 };
 

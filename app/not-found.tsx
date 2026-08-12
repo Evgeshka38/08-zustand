@@ -2,27 +2,18 @@ import type { Metadata } from 'next';
 
 import css from './not-found.module.css';
 
-const OG_IMAGE =
-  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
-
 export const metadata: Metadata = {
   title: 'Page not found | NoteHub',
   description:
     'The requested NoteHub page does not exist.',
   openGraph: {
-    title: 'Page not found | NoteHub',
-    description:
-      'The requested NoteHub page does not exist.',
-    url: '/404',
-    images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'NoteHub',
-      },
-    ],
-  },
+  title: 'Page not found | NoteHub',
+  description: 'The requested NoteHub page does not exist.',
+  url: '/404',
+  images: [
+    'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+  ],
+},
 };
 
 const NotFound = () => {
