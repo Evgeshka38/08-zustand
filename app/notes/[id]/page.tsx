@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import {
   dehydrate,
   HydrationBoundary,
@@ -8,11 +9,48 @@ import { fetchNoteById } from '@/lib/api';
 
 import NoteDetailsClient from './NoteDetails.client';
 
+const OG_IMAGE =
+  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
+
 interface NoteDetailsPageProps {
   params: Promise<{
     id: string;
   }>;
 }
+
+export const generateMetadata = async ({
+  params,
+}: NoteDetailsPageProps): Promise<Metadata> => {
+  const { id } = await params;
+
+  const note = await fetchNoteById(id);
+
+  const title = `${note.title} | NoteHub`;
+
+  const description =
+    note.content.length > 150
+      ? `${note.content.slice(0, 147)}...`
+      : note.content;
+
+  return {
+    title,
+    description,
+
+    openGraph: {
+      title,
+      description,
+      url: `/notes/${id}`,
+      images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'NoteHub',
+      },
+    ],
+    },
+  };
+};
 
 const NoteDetailsPage = async ({
   params,

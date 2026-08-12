@@ -1,16 +1,14 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import {
   keepPreviousData,
   useQuery,
 } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
-
 import ErrorMessage from '@/components/ErrorMessage/ErrorMessage';
 import Loader from '@/components/Loader/Loader';
-import Modal from '@/components/Modal/Modal';
-import NoteForm from '@/components/NoteForm/NoteForm';
 import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
 import SearchBox from '@/components/SearchBox/SearchBox';
@@ -28,7 +26,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
   const [page, setPage] = useState(1);
   const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const updateSearch = useDebouncedCallback(
     (value: string) => {
@@ -43,13 +40,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
     updateSearch(value);
   };
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['notes', page, search, tag],
@@ -84,13 +74,12 @@ const NotesClient = ({ tag }: NotesClientProps) => {
             />
           )}
 
-          <button
-            type="button"
+         <Link
+            href="/notes/action/create"
             className={css.button}
-            onClick={handleOpenModal}
           >
             Create note +
-          </button>
+          </Link>
         </header>
 
         {isLoading && <Loader />}
@@ -107,11 +96,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
           <p>No notes found.</p>
         )}
 
-        {isModalOpen && (
-          <Modal onClose={handleCloseModal}>
-            <NoteForm onCancel={handleCloseModal} />
-          </Modal>
-        )}
       </div>
     </main>
   );
