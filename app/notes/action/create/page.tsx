@@ -3,9 +3,8 @@ import type { Metadata } from 'next';
 import NoteForm from '@/components/NoteForm/NoteForm';
 
 import css from './CreateNote.module.css';
+import { OG_IMAGE, SITE_URL } from '@/lib/constants';
 
-const OG_IMAGE =
-  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
 
 export const metadata: Metadata = {
   title: 'Create note | NoteHub',
@@ -13,15 +12,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Create note | NoteHub',
     description: 'Create a new note in NoteHub.',
-    url: '/notes/action/create',
+    url: `${SITE_URL}/notes/action/create`,
     images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'NoteHub',
-      },
-    ],
+          {
+            url: OG_IMAGE,
+            width: 1200,
+            height: 630,
+            alt: 'NoteHub',
+          },
+        ],
   },
 };
 

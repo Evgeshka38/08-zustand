@@ -5,11 +5,8 @@ import { Roboto } from 'next/font/google';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
-
+import { OG_IMAGE, SITE_URL } from '@/lib/constants';
 import './globals.css';
-
-const OG_IMAGE =
-  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -19,8 +16,6 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://08-zustand-roan-six.vercel.app'),
-
   title: 'NoteHub',
   description:
     'NoteHub is a simple and efficient application for managing personal notes.',
@@ -29,10 +24,10 @@ export const metadata: Metadata = {
     title: 'NoteHub',
     description:
       'NoteHub is a simple and efficient application for managing personal notes.',
-    url: '/',
+    url: `${SITE_URL}`,
     images: [
       {
-        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: 'NoteHub',

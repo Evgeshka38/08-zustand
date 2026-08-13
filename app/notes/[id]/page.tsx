@@ -8,9 +8,7 @@ import {
 import { fetchNoteById } from '@/lib/api';
 
 import NoteDetailsClient from './NoteDetails.client';
-
-const OG_IMAGE =
-  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
+import { OG_IMAGE, SITE_URL } from '@/lib/constants';
 
 interface NoteDetailsPageProps {
   params: Promise<{
@@ -39,7 +37,7 @@ export const generateMetadata = async ({
     openGraph: {
       title,
       description,
-      url: `/notes/${id}`,
+      url: `${SITE_URL}/notes/${id}`,
       images: [
       {
         url: OG_IMAGE,

@@ -4,15 +4,12 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
-
 import { fetchNotes } from '@/lib/api';
-
 import NotesClient from './Notes.client';
+import { OG_IMAGE, SITE_URL } from '@/lib/constants';
 
 const PER_PAGE = 12;
 
-const OG_IMAGE =
-  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
 
 interface NotesFilterPageProps {
   params: Promise<{
@@ -42,7 +39,7 @@ export const generateMetadata = async ({
     openGraph: {
       title,
       description,
-      url: `/notes/filter/${currentTag}`,
+      url: `${SITE_URL}/notes/filter/${currentTag}`,
       images: [
       {
         url: OG_IMAGE,

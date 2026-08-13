@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import css from './not-found.module.css';
+import { OG_IMAGE, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Page not found | NoteHub',
@@ -9,10 +10,15 @@ export const metadata: Metadata = {
   openGraph: {
   title: 'Page not found | NoteHub',
   description: 'The requested NoteHub page does not exist.',
-  url: '/404',
+  url: `${SITE_URL}/404`,
   images: [
-    'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
-  ],
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'NoteHub',
+      },
+    ],
 },
 };
 
