@@ -4,17 +4,25 @@ import NoteForm from '@/components/NoteForm/NoteForm';
 
 import css from './CreateNote.module.css';
 
+const OG_IMAGE =
+  'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg';
+
 export const metadata: Metadata = {
   title: 'Create note | NoteHub',
   description: 'Create a new note in NoteHub.',
   openGraph: {
-  title: 'Create note | NoteHub',
-  description: 'Create a new note in NoteHub.',
-  url: '/notes/action/create',
-  images: [
-    'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
-  ],
-},
+    title: 'Create note | NoteHub',
+    description: 'Create a new note in NoteHub.',
+    url: '/notes/action/create',
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'NoteHub',
+      },
+    ],
+  },
 };
 
 const CreateNote = () => {
